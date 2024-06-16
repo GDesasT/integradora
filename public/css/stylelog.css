@@ -1,0 +1,102 @@
+
+body{
+    background-color: transparent;
+    background-image: url('../img/comedor.jpg'); 
+    background-position: center;
+    background-size: cover;
+    
+}
+.wrapper{
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+}
+
+.fondito{
+    display: flex;
+    background-color: #1314148a;
+    border-radius: 7px;
+    justify-content: center;
+    align-items: center;
+    width: 500px;
+}
+
+#usuario{
+    border-radius: 20px;
+    margin-bottom: 30px;
+    width: 250px;
+    height: 40px;
+    padding: 20px;
+}
+
+#contraseña{
+    border-radius: 20px;
+    margin-bottom: 30px;
+    width: 250px;
+    height: 40px;
+    padding: 20px;
+
+}
+
+.login-form h1{
+    text-align: center;
+    margin:50px
+}
+
+#boton{
+   width: 200px;
+   
+   
+}
+
+.entrar{
+    padding: 20px;
+    justify-content: center;
+    width: 80px;
+    text-align: center;
+    margin-right: -15px;
+    
+}
+
+.olvide{
+    display: flex;
+    justify-content: center;
+    padding: 20px;
+    text-align: center;
+}
+
+.options{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+#recordar{
+    cursor: pointer;
+}
+
+
+.login-form{
+    color: rgb(255, 255, 255);
+}
+.input-group{
+    color: rgb(255, 255, 255);
+}
+
+
+
+.card {
+    margin: 40px;
+    height: auto;
+    width: 400px;
+    background-color: transparent;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0px 3px 4px rgba(248, 1, 1, 0.396);
+    transition: transform 0.3s ease;
+  }
+  
+  .card:hover {
+    transform: translateY(-20px);
+  }
