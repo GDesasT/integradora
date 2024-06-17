@@ -90,27 +90,8 @@ body{
 }
 
 .info-h1{
-    color: #fff;
     text-align: center;
-    width: 100%;
-}
-
-.cont-info{
-    padding: 20px;
     background-color: #00000062;
-    width: 500px;
-}
-
-.info{
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-}
-
-.p-info{
-    color: #fff;
 }
 
 .container-1{
