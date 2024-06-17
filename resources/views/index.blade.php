@@ -8,6 +8,6 @@
                 <img src="" alt="">
                 <p>que la chupe kevin</p>
             </div>
-        </div>
+     
     </body>
 @endsection
