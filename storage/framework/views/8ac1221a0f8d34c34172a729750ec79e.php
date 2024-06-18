@@ -19,6 +19,15 @@
                     <a class="nav-link <?php echo e(request()->routeIs('feedback') ? 'active' : ''); ?>" href="<?php echo e(route('feedback')); ?>">Feedback</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link <?php echo e(request()->routeIs('examen') ? 'active' : ''); ?>" href="<?php echo e(route('examen')); ?>">examen</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php echo e(request()->routeIs('practica1') ? 'active' : ''); ?>" href="<?php echo e(route('practica1')); ?>">practica1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link <?php echo e(request()->routeIs('practica2') ? 'active' : ''); ?>" href="<?php echo e(route('practica2')); ?>">practica2</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link disabled" aria-disabled="true">Comedor Industrial</a>
                 </li>
             </ul>

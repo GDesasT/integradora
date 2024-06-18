@@ -1,6 +1,4 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
 <body>
     <h1 style="text-align: center;">Registro de alumnos</h1>    
 
@@ -73,9 +71,9 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     
 </body>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('css') 
+<?php $__env->startSection('css'); ?> 
     <style>
         .alumno {
             margin-bottom: 10px;
@@ -125,9 +123,9 @@
         display: flex;
     }
     </style>
-@endsection
+<?php $__env->stopSection(); ?>
 
-@section('script')
+<?php $__env->startSection('script'); ?>
 <script>
     function mostrarModal() {
         document.getElementById('modalAgregar').style.display = 'block';
@@ -457,4 +455,5 @@
     };
     
 </script>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\kevin\OneDrive\Documentos\GitHub\integradora\resources\views/examen.blade.php ENDPATH**/ ?>

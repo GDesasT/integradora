@@ -25,4 +25,19 @@ class HomeController extends Controller
     {
         return view('feedback');
     }
+
+    public function examen()
+    {
+        return view('examen');
+    }
+
+    public function practica1()
+    {
+        return view('practica1');
+    }
+
+    public function practica2()
+    {
+        return view('practica2');
+    }
 }

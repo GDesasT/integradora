@@ -19,6 +19,15 @@
                     <a class="nav-link {{ request()->routeIs('feedback') ? 'active' : '' }}" href="{{ route('feedback') }}">Feedback</a>
                 </li>
                 <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('examen') ? 'active' : '' }}" href="{{ route('examen') }}">examen</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('practica1') ? 'active' : '' }}" href="{{ route('practica1') }}">practica1</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link {{ request()->routeIs('practica2') ? 'active' : '' }}" href="{{ route('practica2') }}">practica2</a>
+                </li>
+                <li class="nav-item">
                     <a class="nav-link disabled" aria-disabled="true">Comedor Industrial</a>
                 </li>
             </ul>
