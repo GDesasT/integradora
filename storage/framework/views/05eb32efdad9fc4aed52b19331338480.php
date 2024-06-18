@@ -56,12 +56,12 @@
     <table class="table table-success table-striped-columns" >
         <thead >
             <tr >
-                <th scope="col"class="table-danger"> Matricula:</th>
-                <th scope="col"class="table-danger"> Nombre:</th>
-                <th scope="col"class="table-danger"> Apellido:</th>
-                <th scope="col"class="table-danger"> Edad:</th>
-                <th scope="col"class="table-danger"> Fecha Nacimiento:</th>
-                <th scope="col"class="table-danger"> Accion:</th>
+                <th scope="col"> Matricula:</th>
+                <th scope="col"> Nombre:</th>
+                <th scope="col"> Apellido:</th>
+                <th scope="col"> Edad:</th>
+                <th scope="col"> Fecha Nacimiento:</th>
+                <th scope="col"> Accion:</th>
             </tr>
         </thead >
         <tbody id="listaAlumnos">
@@ -162,7 +162,7 @@
                 inputFecha.disabled=true;
 
                 var button = document.createElement('button');
-                button.className = 'btn btn-outline-danger';
+                button.className = 'btn btn-outline';
                 button.textContent = 'Borrar';
                 button.onclick = function() {
                     borrarAlumno(index);
