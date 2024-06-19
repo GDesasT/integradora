@@ -2,7 +2,7 @@
 
 @section('content')
 <body>
-  <div class="tab">
+<div class="tab">
     <table class="table">
       <thead>
         <tr>
@@ -30,6 +30,15 @@
         <option value="2">IMC Ascendente</option>
         <option value="3">IMC Descendente</option>
       </select>
+      <div class="filter">
+        <h4>Filtrar por fechas:</h4>
+        <label for="FechaPri">Desde:</label>
+        <input type="date" class="form-control filter-1" placeholder="Desde:" id="FechaPri">
+        <label for="FechaFin">Hasta:</label>
+        <input type="date" class="form-control filter-1" placeholder="Hasta:" id="FechaFin">
+        <button type="button" class="btn btn-primary filter-1" id="btn-filter" onclick="filtrofecha()"
+          disabled>Filtrar</button>
+      </div>
     </div>
   </div>
 
@@ -54,51 +63,59 @@
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">
             Close
           </button>
-          <button type="button" id="btnpopo" onclick="confirmarAgregarAlumno()" class="btn btn-primary" disabled>Save changes</button>
+          <button type="button" id="btnpopo" onclick="confirmarAgregarAlumno()" class="btn btn-primary" disabled>Save
+            changes</button>
         </div>
       </div>
     </div>
   </div>
-
-  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
-  <script src="script.js"></script>
 </body>
 @endsection
 
 @section('css') 
 <style>
     .modal-body {
-      display: flex;
-    }
-    
-    .form-control {
-      max-width: 200px;
-    }
-    
-    .form-select{
-      max-width: 200px;
-      margin-left: 20px;
-    }
-    
-    .btn-area{
-      display: flex;
-    }
-    
-    .tab {
-      max-width: 80%;
-      margin: 5% 10%;
-    }
-    
-    .form-control{
-      max-width: 80%;
-      min-width: 80px;
-    }
-    
-    .td-control{
-      align-items: center;
-      margin-right: 0;
-      max-width: 200px;
-    }
+  display: flex;
+}
+
+.form-control {
+  max-width: 200px;
+}
+
+.form-select{
+  max-width: 200px;
+  margin-left: 20px;
+}
+
+.btn-area{
+  display: flex;
+  max-height: 38px;
+}
+
+.filter{
+  max-width: 200px;
+  margin-left: 20px;
+}
+
+.filter-1{
+  margin: 5px;
+}
+
+.tab {
+  max-width: 80%;
+  margin: 5% 10%;
+}
+
+.form-control{
+  max-width: 80%;
+  min-width: 80px;
+}
+
+.td-control{
+  align-items: center;
+  margin-right: 0;
+  max-width: 200px;
+}
 </style>
 @endsection
 
@@ -106,36 +123,38 @@
 <script>
     var alumnos = [
   {
-    matricula: 1,
-    nombre: "a",
-    apellido: "asfg",
-    peso: 75.0,
-    estatura: 1.3,
-    fechanacimiento: "2013-12-12",
+    matricula: 23170051,
+    nombre: "Juan Gerardo",
+    apellido: "Alcantar Torres",
+    peso: 54.0,
+    estatura: 1.67,
+    fechanacimiento: "2001-09-04",
   },
   {
-    matricula: 3,
-    nombre: "c",
-    apellido: "zasdfs",
-    peso: 50,
+    matricula: 23170057,
+    nombre: "Kevin",
+    apellido: "Gonzalez",
+    peso: 80,
     estatura: 1.7,
-    fechanacimiento: "2012-12-12",
+    fechanacimiento: "2004-12-09",
     },
   {
     matricula: 2,
-    nombre: "b",
-    apellido: "asfdsg",
-    peso: 56.0,
-    estatura: 1.5,
-    fechanacimiento: "2014-12-12",
+    nombre: "Dannespino",
+    apellido: "Rojo",
+    peso: 82,
+    estatura: 1.7,
+    fechanacimiento: "2005-09-27",
   },
 ];
 
-function dibujarAlumnos() {
+function dibujarAlumnos(lista) {
   var listaAlumnos = document.getElementById("listaAlumnos");
   listaAlumnos.innerHTML = "";
 
-  alumnos.forEach(function (alumno, index) {
+  var alumnosADibujar = lista ||  alumnos;
+
+  alumnosADibujar.forEach(function (alumno, index) {
     var tr = document.createElement("tr");
     tr.className = "alumno";
 
@@ -309,6 +328,23 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 });
 
+function filtrofecha() {
+  var FechaPri = document.getElementById('FechaPri').value;
+  var FechaFin = document.getElementById('FechaFin').value;
+
+  if (FechaPri && FechaFin){
+      var alumnosfiltrados = alumnos.filter(function(alumno){
+          return alumno.fechanacimiento >= FechaPri && alumno.fechanacimiento <= FechaFin;
+      });
+
+      if (alumnosfiltrados.length > 0) {
+        dibujarAlumnos(alumnosfiltrados);
+      } else {
+        alert('No se encontraron alumnos en el rango de fechas especificado.');
+      }
+    }
+  }
+
 function ordenar() {
   var select = document.querySelector(".form-select");
   var valorSeleccionado = select.value;
@@ -323,6 +359,28 @@ function ordenar() {
   dibujarAlumnos();
 }
 
+document.addEventListener("DOMContentLoaded", function() {
+  var inputFechaPri = document.getElementById('FechaPri');
+  var inputFechaFin = document.getElementById('FechaFin');
+  var btnfilter = document.getElementById('btn-filter');
+
+  function verificarbtnfecha () {
+    if ( inputFechaPri.value.trim() !== '' &&
+         inputFechaFin.value.trim() !== '')
+         {
+          btnfilter.disabled = false;
+         } 
+         
+         else 
+         {
+          btnfilter.disabled = true;
+         }
+  }
+
+  inputFechaPri.addEventListener('input', verificarbtnfecha);
+  inputFechaFin.addEventListener('input', verificarbtnfecha);
+});
+
 document.addEventListener("DOMContentLoaded", function () {
   var inputMatricula = document.getElementById('Matricula');
   var inputNombre = document.getElementById('Nombre');
@@ -332,15 +390,7 @@ document.addEventListener("DOMContentLoaded", function () {
   var inputFecha = document.getElementById('Fecha');
   var botonGuardar = document.getElementById('btnpopo');
 
-  function verificarCampos() {
-      console.log("Verificando campos...");
-      console.log("Matrícula:", inputMatricula.value.trim());
-      console.log("Nombre:", inputNombre.value.trim());
-      console.log("Apellido:", inputApellido.value.trim());
-      console.log("Peso:", inputPeso.value.trim());
-      console.log("Estatura:", inputEstatura.value.trim());
-      console.log("Fecha:", inputFecha.value.trim());
-      
+  function verificarCampos() {   
       if (
           inputMatricula.value.trim() !== '' &&
           inputNombre.value.trim() !== '' &&
