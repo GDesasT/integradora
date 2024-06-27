@@ -4,44 +4,50 @@
     <title>Usuarios</title>
 </head>
 <body>
-    <h1>TABLA DE DATOS ALUMNOS UTT</h1>
-    @if($tblusuarios->isEmpty())
-        <p>No hay usuarios con el nombre buscado.</p>
-    @else
-        <table>
-            <thead>
+    <h1>Consultas de Usuarios</h1>
+
+    {{-- Consulta 1: Listar los nombres de los usuarios --}}
+    <h2>Consulta 1: Listar los nombres de los usuarios</h2>
+    @foreach($query1 as $nombre)
+        <p>{{ $nombre }}</p>
+    @endforeach
+
+    {{-- Consulta 2: Calcular el saldo máximo de los usuarios de sexo “Mujer” --}}
+    <h2>Consulta 2: Saldo máximo de usuarios de sexo “Mujer”</h2>
+    <p>{{ $query2 }}</p>
+
+    {{-- Consulta 3: Listar nombre y teléfono de los usuarios con teléfono NOKIA, BLACKBERRY o SONY --}}
+    <h2>Consulta 3: Usuarios con teléfono NOKIA, BLACKBERRY o SONY</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Nombre</th>
+                <th>Teléfono</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach($query3 as $usuario)
                 <tr>
-                    <th>ID</th>
-                    <th>Usuario</th>
-                    <th>Nombre</th>
-                    <th>Sexo</th>
-                    <th>Nivel</th>
-                    <th>Email</th>
-                    <th>Teléfono</th>
-                    <th>Marca</th>
-                    <th>Compañía</th>
-                    <th>Saldo</th>
-                    <th>Activo</th>
+                    <td>{{ $usuario->nombre }}</td>
+                    <td>{{ $usuario->telefono }}</td>
                 </tr>
-            </thead>
-            <tbody>
-                @foreach($tblusuarios as $usuario)
-                    <tr>
-                        <td>{{ $usuario->idx }}</td>
-                        <td>{{ $usuario->usuario }}</td>
-                        <td>{{ $usuario->nombre }}</td>
-                        <td>{{ $usuario->sexo }}</td>
-                        <td>{{ $usuario->nivel }}</td>
-                        <td>{{ $usuario->email }}</td>
-                        <td>{{ $usuario->telefono }}</td>
-                        <td>{{ $usuario->marca }}</td>
-                        <td>{{ $usuario->compañia }}</td>
-                        <td>{{ $usuario->saldo }}</td>
-                        <td>{{ $usuario->activo ? 'Sí' : 'No' }}</td>
-                    </tr>
-                @endforeach
-            </tbody>
-        </table>
-    @endif
+            @endforeach
+        </tbody>
+    </table>
+
+    {{-- Consulta 4: Contar los usuarios sin saldo o inactivos --}}
+    <h2>Consulta 4: Contar usuarios sin saldo o inactivos</h2>
+    <p>{{ $query4 }}</p>
+
+    {{-- Consulta 5: Listar el login de los usuarios con nivel 1, 2 o 3 --}}
+    <h2>Consulta 5: Usuarios con nivel 1, 2 o 3</h2>
+    <ul>
+        @foreach($query5 as $usuario)
+            <li>{{ $usuario }}</li>
+        @endforeach
+    </ul>
+
+    {{-- Continuar con las demás consultas --}}
+
 </body>
 </html>

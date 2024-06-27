@@ -3,127 +3,78 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Models\tblusuarios;
+use App\Models\tblusuarios; // Asegúrate de importar el modelo correcto
 
 class UserController extends Controller
 {
     public function index()
     {
-        $tblusuarios = tblusuarios::where('nombre', 'BRENDA')->get();
-        return view('users.index', compact('tblusuarios'));
-    }
+        // Consulta 1: Listar los nombres de los usuarios
+        $query1 = tblusuarios::select('nombre')->get();
 
-    public function usersByGenderM()
-    {
-        $tblusuarios = tblusuarios::where('sexo', 'M')->get();
-        return view('users.index', compact('tblusuarios'));
-    }
+        // Consulta 2: Calcular el saldo máximo de los usuarios de sexo "Mujer"
+        $query2 = tblusuarios::where('sexo', 'M')
+            ->max('saldo');
 
-    public function usersByGenderH()
-    {
-        $tblusuarios = tblusuarios::where('sexo', 'H')->get();
-        return view('users.index', compact('tblusuarios'));
-    }
+        // Consulta 3: Listar nombre y teléfono de los usuarios con teléfono NOKIA, BLACKBERRY o SONY
+        $query3 = tblusuarios::whereIn('marca', ['NOKIA', 'BLACKBERRY', 'SONY'])
+            ->select('nombre', 'telefono')
+            ->get();
 
-    public function usersByLevel2()
-    {
-        $tblusuarios = tblusuarios::where('nivel', 2)->get();
-        return view('users.index', compact('tblusuarios'));
-    }
+        // Consulta 4: Contar los usuarios sin saldo o inactivos
+        $query4 = tblusuarios::where(function ($query) {
+            $query->where('saldo', 0)
+                ->orWhere('activo', 0);
+        })->count();
 
-    public function usersByLevel3()
-    {
-        $tblusuarios = tblusuarios::where('nivel', 3)->get();
-        return view('users.index', compact('tblusuarios'));
-    }
+        // Consulta 5: Listar el login de los usuarios con nivel 1, 2 o 3
+        $query5 = tblusuarios::whereIn('nivel', [1, 2, 3])
+            ->pluck('usuario');
 
-    public function usersByEmailGmail()
-    {
-        $tblusuarios = tblusuarios::where('email', 'like', '%gmail.com%')->get();
-        return view('users.index', compact('tblusuarios'));
-    }
+        // Consulta 6: Listar los números de teléfono con saldo menor o igual a 300
+        $query6 = tblusuarios::where('saldo', '<=', 300)
+            ->pluck('telefono');
 
-    public function usersByEmailOutlook()
-    {
-        $tblusuarios = tblusuarios::where('email', 'like', '%outlook.com%')->get();
-        return view('users.index', compact('tblusuarios'));
-    }
+        // Consulta 7: Calcular la suma de los saldos de los usuarios de la compañia telefónica NEXTEL
+        $query7 = tblusuarios::where('compañia', 'NEXTEL')
+            ->sum('saldo');
 
-    public function usersByPhonePrefix655()
-    {
-        $tblusuarios = tblusuarios::where('telefono', 'like', '655%')->get();
-        return view('users.index', compact('tblusuarios'));
-    }
+        // Consulta 8: Contar el número de usuarios por compañía telefónica
+        $query8 = tblusuarios::select('compañia')
+            ->selectRaw('count(*) as total')
+            ->groupBy('compañia')
+            ->get();
 
-    public function usersByBrandSamsung()
-    {
-        $tblusuarios = tblusuarios::where('marca', 'SAMSUNG')->get();
-        return view('users.index', compact('tblusuarios'));
-    }
+        // Consulta 9: Contar el número de usuarios por nivel
+        $query9 = tblusuarios::select('nivel')
+            ->selectRaw('count(*) as total')
+            ->groupBy('nivel')
+            ->get();
 
-    public function usersByBrandLG()
-    {
-        $tblusuarios = tblusuarios::where('marca', 'LG')->get();
-        return view('users.index', compact('tblusuarios'));
-    }
+        // Consulta 10: Listar el login de los usuarios con nivel 2
+        $query10 = tblusuarios::where('nivel', 2)
+            ->pluck('usuario');
 
-    public function usersByCompanyTelcel()
-    {
-        $tblusuarios = tblusuarios::where('compañia', 'TELCEL')->get();
-        return view('users.index', compact('tblusuarios'));
-    }
+        // Consulta 11: Mostrar el email de los usuarios que usan gmail
+        $query11 = tblusuarios::where('email', 'like', '%@gmail.com')
+            ->pluck('email');
 
-    public function usersByCompanyMovistar()
-    {
-        $tblusuarios = tblusuarios::where('compañia', 'MOVISTAR')->get();
-        return view('users.index', compact('tblusuarios'));
-    }
+        // Consulta 12: Listar nombre y teléfono de los usuarios con teléfono LG, SAMSUNG o MOTOROLA
+        $query12 = tblusuarios::whereIn('marca', ['LG', 'SAMSUNG', 'MOTOROLA'])
+            ->select('nombre', 'telefono')
+            ->get();
 
-    public function usersByBalanceGreaterThan100()
-    {
-        $tblusuarios = tblusuarios::where('saldo', '>', 100)->get();
-        return view('users.index', compact('tblusuarios'));
-    }
+        // Consulta 13: Listar nombre y teléfono de los usuarios con teléfono que no sea de la marca LG o SAMSUNG
+        $query13 = tblusuarios::whereNotIn('marca', ['LG', 'SAMSUNG'])
+            ->select('nombre', 'telefono')
+            ->get();
 
-    public function usersByBalanceLessThan50()
-    {
-        $tblusuarios = tblusuarios::where('saldo', '<', 50)->get();
-        return view('users.index', compact('tblusuarios'));
-    }
+        // Consulta 14: Listar el login y teléfono de los usuarios con compañia telefónica IUSACELL
+        $query14 = tblusuarios::where('compañia', 'IUSACELL')
+            ->select('usuario', 'telefono')
+            ->get();
 
-    public function activeUsers()
-    {
-        $tblusuarios = tblusuarios::where('activo', 1)->get();
-        return view('users.index', compact('tblusuarios'));
-    }
-
-    public function inactiveUsers()
-    {
-        $tblusuarios = tblusuarios::where('activo', 0)->get();
-        return view('users.index', compact('tblusuarios'));
-    }
-
-    public function usersWithNameLuis()
-    {
-        $tblusuarios = tblusuarios::where('nombre', 'LUIS')->get();
-        return view('users.index', compact('tblusuarios'));
-    }
-
-    public function usersWithNameJessica()
-    {
-        $tblusuarios = tblusuarios::where('nombre', 'JESSICA')->get();
-        return view('users.index', compact('tblusuarios'));
-    }
-
-    public function usersWithPhoneContains143()
-    {
-        $tblusuarios = tblusuarios::where('telefono', 'like', '%143%')->get();
-        return view('users.index', compact('tblusuarios'));
-    }
-
-    public function usersWithEmailLive()
-    {
-        $tblusuarios = tblusuarios::where('email', 'like', '%live.com%')->get();
-        return view('users.index', compact('tblusuarios'));
-    }
-}
+        // Consulta 15: Listar el login y teléfono de los usuarios con compañia telefónica que no sea TELCEL
+        $query15 = tblusuarios::where('compañia', '<>', 'TELCEL')
+            ->select('usuario', 'telefono')
+            ->get();
