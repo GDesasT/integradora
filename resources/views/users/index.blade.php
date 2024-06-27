@@ -6,7 +6,7 @@
 <body>
     <h1>TABLA DE DATOS ALUMNOS UTT</h1>
     @if($tblusuarios->isEmpty())
-        <p>No hay usuarios con el nombre Ricardo.</p>
+        <p>No hay usuarios con el nombre buscado.</p>
     @else
         <table>
             <thead>
