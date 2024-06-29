@@ -113,6 +113,19 @@ body{
     color: #fff;
 }
 
+.container-logo{
+    width: 280px;
+    height: 280px;
+    background-color: #00000062;
+    border-radius: 100%;
+    align-content: center;
+}
+
+.logo{margin-top: -8%;
+    margin-left: 15%;
+    max-width: 200px;
+}
+
 .container-1{
     background-image: url('../img/comidarica.jpg');
     background-size: cover;
@@ -122,4 +135,5 @@ body{
     height: 600px;
     margin-left: 0;
     margin-right: 0;
+    display: flex;
 }

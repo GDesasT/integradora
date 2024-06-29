@@ -1,11 +1,9 @@
-@extends('layouts.app')
-
-@section('content')
+<?php $__env->startSection('content'); ?>
     <body>
         <div class="container-1">
             <div class="info">
                 <div class="container-logo">
-                    <img src="{{ asset('img/logo.png')}}" alt="Logo" class="logo">
+                    <img src="<?php echo e(asset('img/logo.png')); ?>" alt="Logo" class="logo">
                 </div>
                 <div class="cont-info">
                     <h1 class="info-h1">Comedor Industrial</h1>
@@ -14,4 +12,5 @@
             </div>
         </div>
     </body>
-@endsection
+<?php $__env->stopSection(); ?>
+<?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\Users\gera3\OneDrive\Documentos\GitHub\integradora\resources\views/index.blade.php ENDPATH**/ ?>
