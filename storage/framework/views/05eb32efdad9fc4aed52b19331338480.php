@@ -48,9 +48,7 @@
             if (selectcol === '1') {
                 var randomColor = '#' + Math.floor(Math.random() * 16777215).toString(16);
                 $('body').css('background-color', randomColor);
-                inputcol.hide();
             } else if (selectcol === '2') {
-                inputcol.show();
                 inputcol.focus(); // Enfocar en el input para mayor usabilidad
             }
         });
