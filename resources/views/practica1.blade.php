@@ -1,84 +1,145 @@
 @extends('layouts.app')
 
+@section('css')
+<style>
+.container {
+    margin-top: 30px;
+}
+
+.btn-outline-info {
+    margin-left: 15px;
+    margin-top: 20px;
+    
+}
+
+.btn-outline-warning {
+    margin-right: 15px;
+    margin-top: 20px;
+    
+}
+
+.table {
+    width: 100%;
+    margin-top: 20px;
+    border-collapse: collapse;
+    border: 2px solid #ccc;
+}
+
+.table th,
+.table td {
+    padding: 10px;
+    text-align: center;
+}
+
+.table th {
+    background-color: #f2f2f2;
+}
+
+.table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+</style>
+@endsection
+
 @section('content')
 <body>
-    <div class="">
-        <div class="row">
-        <div style="background-color: royalblue; border: 2px solid #410059; " class="col-lg-3 col-md-6 col-sm-12">Div 1</div>
-        <div style="background-color: royalblue; border: 2px solid #410059; " class="col-lg-3 col-md-6 col-sm-12">Div 2</div>
-        <div style="background-color: royalblue; border: 2px solid #410059; " class="col-lg-3 col-md-6 col-sm-12">Div 3</div>
-        <div style="background-color: royalblue; border: 2px solid #410059; " class="col-lg-3 col-md-6 col-sm-12">Div 4</div>
-        </div>
-        <br>
-        <div class="row">
-        <div style="background-color: gold; border: 2px solid #410059;" class="col-lg-4 col-md-4 col-sm-12">Div 1</div>
-        <div style="background-color: gold; border: 2px solid #410059;" class="col-lg-4 col-md-4 col-sm-12">Div 2</div>
-        <div style="background-color: gold; border: 2px solid #410059;" class="col-lg-4 col-md-4 col-sm-12">Div 3</div>
-        </div>
-        <br>
-        <div class="row">
-        <div style="background-color: olive; border: 2px solid #410059;" class="col-lg-6 col-md-6 col-sm-12">Div 1</div>
-        <div style="background-color: olive; border: 2px solid #410059;" class="col-lg-6 col-md-6 col-sm-12">Div 2</div>
-        </div>
-        <br>
-        <div class="row">
-        <div style="background-color: firebrick; border: 2px solid #410059;" class="col-lg-2 col-md-2 col-sm-6">Div 1</div>
-        <div style="background-color: firebrick; border: 2px solid #410059;" class="col-lg-2 col-md-2 col-sm-6">Div 2</div>
-        <div style="background-color: firebrick; border: 2px solid #410059;" class="col-lg-2 col-md-2 col-sm-6">Div 3</div>
-        <div style="background-color: firebrick; border: 2px solid #410059;" class="col-lg-2 col-md-2 col-sm-6">Div 4</div>
-        <div style="background-color: firebrick; border: 2px solid #410059;" class="col-lg-2 col-md-2 col-sm-6">Div 5</div>
-        <div style="background-color: firebrick; border: 2px solid #410059;" class="col-lg-2 col-md-2 col-sm-6">Div 6</div>
-        </div>
-        <br>
-        <div class="row">
-        <div style="background-color: pink; border: 2px solid #410059;" class="col-lg-6 col-md-6 col-sm-12">Div 1</div>
-        <div style="background-color: pink; border: 2px solid #410059;" class="col-lg-6 col-md-6 col-sm-12">Div 2</div>
-        </div>
-        <br>
-        <div class="row">
-        <div style="background-color: orangered; border: 2px solid #410059;" class="col-lg-3 col-md-5 col-sm-10">Div 1</div>
-        <div style="background-color: orangered; border: 2px solid #410059;" class="col-lg-3 col-md-5 col-sm-10">Div 2</div>
-        <div style="background-color: orangered; border: 2px solid #410059;" class="col-lg-3 col-md-5 col-sm-10">Div 3</div>
-        <div style="background-color: orangered; border: 2px solid #410059;" class="col-lg-3 col-md-5 col-sm-10">Div 4</div>
-        </div>
-        <br>
-        <div class="row">
-        <div style="background-color: palegreen; border: 2px solid #410059;" class="col-lg-2 col-md-2 col-sm-6">Div 1</div>
-        <div style="background-color: palegreen; border: 2px solid #410059;" class="col-lg-2 col-md-2 col-sm-6">Div 2</div>
-        <div style="background-color: palegreen; border: 2px solid #410059;" class="col-lg-2 col-md-2 col-sm-6">Div 3</div>
-        <div style="background-color: palegreen; border: 2px solid #410059;" class="col-lg-6 col-md-6 col-sm-12">Div 4</div>
-        </div>
-        
-        <br>
-        <div class="row">
-            <div style="background-color: whitesmoke; border: 2px solid #410059;" class="col-lg-4 col-md-4 col-sm-12">Div 1</div>
-            <div style="background-color: whitesmoke; border: 2px solid #410059;" class="col-lg-4 col-md-4 col-sm-12">Div 2</div>
-            <div style="background-color: whitesmoke; border: 2px solid #410059;" class="col-lg-4 col-md-4 col-sm-12">Div 3</div>
-        </div>
-        <br>
-        <div class="row">
-            <div style="background-color: honeydew; border: 2px solid #410059;" class="col-lg-3 col-md-3 col-sm-6">Div 1</div>
-            <div style="background-color: honeydew; border: 2px solid #410059;" class="col-lg-3 col-md-3 col-sm-6">Div 2</div>
-            <div style="background-color: honeydew; border: 2px solid #410059;" class="col-lg-3 col-md-3 col-sm-6">Div 3</div>
-            <div style="background-color: honeydew; border: 2px solid #410059;" class="col-lg-3 col-md-3 col-sm-6">Div 4</div>
-        </div>
-        <br>
-        <div class="row">
-        <div style="background-color: brown; border: 2px solid #410059;" class="col-lg-4 col-md-6 col-sm-12">Div 1</div>
-        <div style="background-color: brown; border: 2px solid #410059;" class="col-lg-4 col-md-6 col-sm-12">Div 2</div>
-        <div style="background-color: brown; border: 2px solid #410059;" class="col-lg-4 col-md-6 col-sm-12">Div 3</div>
-        </div>
-        
-        <br>
-        <div class="row">
-            <div style="background-color: greenyellow; border: 2px solid #410059;" class="col-lg-2 col-md-2 col-sm-4">Div 1</div>
-            <div style="background-color: greenyellow; border: 2px solid #410059;" class="col-lg-2 col-md-2 col-sm-4">Div 2</div>
-            <div style="background-color: greenyellow; border: 2px solid #410059;" class="col-lg-4 col-md-6 col-sm-12">Div 3</div>
-            <div style="background-color: greenyellow; border: 2px solid #410059;" class="col-lg-4 col-md-6 col-sm-12">Div 4</div>
+<div class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <div class="form-group">
+                <label for="key">Key</label>
+                <input type="text" class="form-control" id="key" name="key">
+            </div>
+            <div class="form-group">
+                <label for="value">Value</label>
+                <input type="text" class="form-control" id="value" name="value">
+            </div>
+            <button type="button" class="btn btn-outline-info" onclick="addKeyValue()">Insertar</button>
+            <button type="button" class="btn btn-outline-warning" onclick="createObject()">Crear</button>
+
+            <select id="selectObject" class="form-control mt-3" onchange="objectData()">
+                <option value="-1">Selecciona un objeto</option>
+            </select>
         </div>
     </div>
+
+    <div class="row mt-4">
+        <div class="col-md-6">
+            <h3>Datos del objeto</h3>
+            <table id="dataTable" class="table table-bordered">
+                <thead class="thead-dark">
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
 <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
+@endsection
+
+@section('script')
+<script>
+let object=[];
+        let currentObjectIndex = -1;
+
+        function addKeyValue(){
+            let key=document.getElementById('key').value;
+            let value=document.getElementById('value').value;
+
+            if(key&&value){
+                if(currentObjectIndex  !== -1)
+                {
+                    object[currentObjectIndex][key]=value;
+                    document.getElementById('key').value="";
+                    document.getElementById('value').value="";
+                    objectData();
+                }
+            }
+        }
+
+        function createObject(){
+            let newObject={};
+            object.push(newObject);
+            currentObjectIndex =object.lenght - 1;
+            updateData();
+            objectData();
+        }
+
+        function updateData(){
+            let select = document.getElementById('selectObject');
+            select.innerHTML='';
+            object.forEach((obj,index)=>{
+                let option = document.createElement('option');
+                option.value=index;
+                option.text = `objeto ${index + 1}`;
+                select.add(option);
+            });
+            select.value=currentObjectIndex ;
+
+        }
+
+        function objectData(){
+        let select = document.getElementById('selectObject');
+        currentObjectIndex  = select.value;
+
+        let tbody = document.getElementById('dataTable').getElementsByTagName('tbody')[0];
+        tbody.innerHTML = '';
+
+        let selectedObject = object[currentObjectIndex ];
+        for (let key in selectedObject) {
+            let row = tbody.insertRow();
+            let cellKey = row.insertCell(0);
+            let cellValue = row.insertCell(1);
+            cellKey.textContent = key;
+            cellValue.textContent = selectedObject[key];
+        }
+
+        }
+</script>
 @endsection
