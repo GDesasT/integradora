@@ -4,10 +4,6 @@ namespace App\Http\Controllers;
 
 abstract class Controller
 {
-<<<<<<< Updated upstream
-    //
-}
-=======
 //     public function index()
 //     {
 //     $tblusuarios = tblusuarios::where('age', '>', 25)->get();
@@ -20,4 +16,3 @@ public function users()
 }
 
 
->>>>>>> Stashed changes
