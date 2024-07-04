@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class tblusarios extends Model
+class tblusuarios extends Model
 {
     use HasFactory;
 }
