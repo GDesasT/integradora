@@ -8,26 +8,6 @@
 <body>
     <h1>Consultas</h1>
 
-    <h2>Consulta 1: Detalles de todos los empleados</h2>
-    <ul>
-        <?php $__currentLoopData = $query1; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $empleado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <li><?php echo e($empleado); ?></li>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </ul>
-
-    <h2>Consulta 2: Nombres y apellidos de todos los empleados</h2>
-    <ul>
-        <?php $__currentLoopData = $query2; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $empleado): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <li><?php echo e($empleado->nombre); ?> <?php echo e($empleado->apellido); ?></li>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </ul>
-
-    <h2>Consulta 3: Nombres de las ciudades de empleados (únicos)</h2>
-    <ul>
-        <?php $__currentLoopData = $query3; $__env->addLoop($__currentLoopData); foreach($__currentLoopData as $ciudad): $__env->incrementLoopIndices(); $loop = $__env->getLastLoop(); ?>
-            <li><?php echo e($ciudad->ciudad); ?></li>
-        <?php endforeach; $__env->popLoop(); $loop = $__env->getLastLoop(); ?>
-    </ul>
 
     <h2>Consulta 4: Nombres de productos y precios unitarios</h2>
     <ul>

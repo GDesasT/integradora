@@ -7,7 +7,7 @@
 </head>
 <body>
     <h1>Consultas</h1>
-
+{{-- 
     <h2>Consulta 1: Detalles de todos los empleados</h2>
     <ul>
         @foreach($query1 as $empleado)
@@ -27,7 +27,7 @@
         @foreach($query3 as $ciudad)
             <li>{{ $ciudad->ciudad }}</li>
         @endforeach
-    </ul>
+    </ul> --}}
 
     <h2>Consulta 4: Nombres de productos y precios unitarios</h2>
     <ul>
