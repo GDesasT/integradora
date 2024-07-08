@@ -7,6 +7,32 @@ use App\Models\tblusuarios;
 
 class UserController extends Controller
 {
+    public function createUser(Request $request)
+    {
+        try {
+            // Validar los datos del formulario
+            $validatedData = $request->validate([
+                'nombre' => 'required|string|max:255',
+                'telefono' => 'required|string|max:255',
+                'sexo' => 'required|string|max:1',
+                'marca' => 'required|string|max:255',
+                'compañia' => 'required|string|max:255',
+                'saldo' => 'required|numeric',
+                'nivel' => 'required|integer',
+                'activo' => 'required|boolean',
+                'email' => 'required|email|max:255',
+                'usuario' => 'required|string|max:255',
+            ]);
+
+            // Crear un nuevo usuario
+            $usuario = new tblusuarios($validatedData);
+            $usuario->save();
+
+            return redirect()->back()->with('success', 'Usuario creado exitosamente');
+        } catch (\Exception $e) {
+            return redirect()->back()->with('error', 'Hubo un error al crear el usuario: ' . $e->getMessage());
+        }
+    }
     public function index()
     {
         $query1 = tblusuarios::pluck('nombre');
