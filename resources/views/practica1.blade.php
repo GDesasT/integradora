@@ -6,7 +6,6 @@
     margin-top: 30px;
 }
 
-/* Estilos para la tarjeta (card) */
 .card {
     border: none;
 }
@@ -20,36 +19,20 @@
     margin-bottom: 15px;
 }
 
-/* Estilos para los botones */
-.btn-primary,
-.btn-success {
+.btn-outline-info{
     border-radius: 25px;
     padding: 8px 20px;
+    margin-top: 20px;
+    margin-left: 20px; 
 }
 
-.btn-primary {
-    background-color: #007bff;
-    border-color: #007bff;
+.btn-outline-warning{
+    border-radius: 25px;
+    padding: 8px 20px;
+    margin-top: 20px;
+    margin-left: 20px; 
 }
 
-.btn-primary:hover,
-.btn-primary:focus {
-    background-color: #0069d9;
-    border-color: #0062cc;
-}
-
-.btn-success {
-    background-color: #28a745;
-    border-color: #28a745;
-}
-
-.btn-success:hover,
-.btn-success:focus {
-    background-color: #218838;
-    border-color: #1e7e34;
-}
-
-/* Estilos para la tabla */
 .table {
     width: 100%;
     margin-top: 20px;
@@ -63,16 +46,12 @@
 .table td {
     padding: 12px;
     text-align: center;
-    border: 1px solid #dee2e6; /* Borde ligero */
+    border: 1px;
 }
 
 .table th {
     background-color: #f8f9fa;
-    border-bottom: 2px solid #dee2e6;
-}
-
-.table tbody tr:nth-child(even) {
-    background-color: #f2f2f2;
+    border-bottom: 2px;
 }
 </style>
 @endsection
@@ -93,8 +72,8 @@
                         <label for="value">Value</label>
                         <input type="text" class="form-control" id="value" name="value">
                     </div>
-                    <button type="button" class="btn btn-primary" onclick="addKeyValue()">Insertar datos</button>
-                    <button type="button" class="btn btn-success ml-2" onclick="createObject()">Crear objeto</button>
+                    <button type="button" class="btn btn-outline-info" onclick="addKeyValue()">Insertar datos</button>
+                    <button type="button" class="btn btn-outline-warning" onclick="createObject()">Crear objeto</button>
                 </div>
             </div>
         </div>
