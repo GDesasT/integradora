@@ -76,8 +76,11 @@
             </div>
         </div>
     </div>
-
+    <select id="selectObject" class="form-control mt-3" onchange="objectData()">
+                <option value="-1">Usa un objeto</option>
+            </select>
     <div class="row mt-4">
+        
         <div class="col-lg-6">
             <div class="card shadow-sm">
                 <div class="card-body">
