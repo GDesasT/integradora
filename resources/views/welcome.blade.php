@@ -3,8 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Juego Tic Tac Toe</title>
+    <title>GatoGuaton</title>
     <style>
+     
+
         body {
             background-color: black;
             color: white;
@@ -20,53 +22,15 @@
             background-position: center;
         }
 
-        .container {
-            text-align: center;
-            border: 2px solid cyan;
-            padding: 20px;
-            background: rgba(0, 0, 0, 0.7); /* Fondo semitransparente para resaltar el contenido */
-        }
-
-        .title {
-            font-size: 48px;
-            margin: 20px 0;
-        }
-
-        .start-button {
-            font-size: 24px;
-            color: white;
-            background-color: transparent;
-            border: none;
-            padding: 10px 20px;
-            cursor: pointer;
-            margin: 20px 0;
-        }
-
-        
-    
-
-        .player-info {
-            position: absolute;
-            top: 10px;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            padding: 0 20px;
-        }
-
-        .player-info .player {
-            display: flex;
-            align-items: center;
-        }
-
-        .player-info .player span {
-            margin-left: 10px;
-        }
-        
-
+       
     </style>
 </head>
 <body>
-
+    
+    <script>
+        document.body.addEventListener('click', function() {
+            window.location.href = '/login/vista';
+        });
+    </script>
 </body>
 </html>
