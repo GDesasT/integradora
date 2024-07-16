@@ -40,7 +40,7 @@ class UsuariosController extends Controller
     $request->session()->invalidate();
     $request->session()->regenerateToken();
 
-    return redirect('/login/vista');
+    return redirect('/');
 }
 
     public function vistaRegistro()
@@ -50,11 +50,7 @@ class UsuariosController extends Controller
 
     public function registrar(Request $request)
     {
-        // $request->validate([
-        //     'name' => 'required|string|max:255',
-        //     'email' => 'required|string|email|max:255|unique:users',
-        //     'password' => 'required|string|min:8|confirmed',
-        // ]);
+
 
         $user = User::create([
             'name' => $request->name,
@@ -62,10 +58,7 @@ class UsuariosController extends Controller
             'password' => Hash::make($request->password),
         ]);
 
-        // Auth::login($user);
-
-        // return redirect('/perfil/vista');
-        return redirect('/login/vista');
+        return redirect('/');
     }
 
     public function vistaPerfil()

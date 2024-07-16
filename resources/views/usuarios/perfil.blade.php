@@ -12,7 +12,7 @@
             font-family: 'Poppins', sans-serif;
         }
         body {
-            
+            background-color: #f0f2f5;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -20,7 +20,8 @@
             margin: 0;
         }
         .perfil-box {
-            width: 400px;
+            width: 100%;
+            max-width: 450px;
             background: rgba(255, 255, 255, 0.9); 
             border: 2px solid rgba(255, 255, 255, 0.5);
             border-radius: 20px;
@@ -59,8 +60,17 @@
         .btn-primary:hover {
             background: #0056b3;
         }
-     
-        .logout-link:hover {
+        .logout-link, .dashboard-link {
+            display: block;
+            text-align: center;
+            margin-top: 20px;
+            font-size: 1em;
+            font-weight: 600;
+            color: #007bff;
+            text-decoration: none;
+            cursor: pointer;
+        }
+        .logout-link:hover, .dashboard-link:hover {
             color: #0056b3;
         }
     </style>
@@ -70,7 +80,6 @@
         <h1>Perfil</h1>
         <form>
             @csrf
-            
             <div class="form-group">
                 <label for="name">Username:</label>
                 <input type="text" id="name" name="name" class="form-control" value="{{ Auth::user()->name }}" readonly>
@@ -92,12 +101,9 @@
            class="logout-link">
             Cerrar Sesión
         </a>
-        <br>
-        <a href="{{ route('dashboard') }}" 
-        
-        class="logout-link">
-         Regresar al Dashboard
-     </a>
+        <a href="{{ route('dashboard') }}" class="dashboard-link">
+            Regresar al Dashboard
+        </a>
     </div>
 </body>
 </html>

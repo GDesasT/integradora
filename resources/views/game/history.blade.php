@@ -7,13 +7,13 @@
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
     <style>
         body {
-            
+            background-color: #f8f9fa;
             display: flex;
             justify-content: center;
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            
+            font-family: 'Poppins', sans-serif;
         }
         .history-box {
             max-width: 1000px;
@@ -23,7 +23,7 @@
             background-color: #fff;
             border-radius: 20px;
             box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
-            overflow-x: auto; 
+            overflow-x: auto;
         }
         .history-box h1 {
             font-size: 2em;
@@ -87,12 +87,12 @@
                                 @if ($game->winner_id == Auth::id())
                                     Victoria {{ Auth::user()->name }}
                                 @else
-                                    
+                                    Victoria del oponente
                                 @endif
                             @elseif ($game->player2_win)
                                 Derrota {{ Auth::user()->name }}
                             @else
-                                Empate 
+                                Empate
                             @endif
                         </td>
                         <td>{{ $game->created_at }}</td>
@@ -100,17 +100,14 @@
                             <form action="{{ route('game.delete', $game->id) }}" method="POST">
                                 @csrf
                                 @method('DELETE')
-                                <button type="submit" class="btn btn-sm btn-danger">Delete</button>
+                                <button type="submit" class="btn btn-sm btn-danger">Eliminar</button>
                             </form>
                         </td>
                     </tr>
                 @endforeach
             </tbody>
         </table>
-        <a href="{{ route('dashboard') }}" 
-        
-        class="logout-link">
-         Regresar al Dashboard
+        <a href="{{ route('dashboard') }}" class="btn-back">Regresar al Dashboard</a>
     </div>
 </body>
 </html>

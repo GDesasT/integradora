@@ -6,9 +6,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
     <style>
-        * {
-    
-        }
         body {
             background-color: #f0f2f5;
             display: flex;
@@ -24,27 +21,36 @@
             border: 1px solid #ddd;
             border-radius: 10px;
             padding: 30px;
-           
         }
         .form-box h2 {
-          
+            font-size: 1.8em;
+            color: #333;
             text-align: center;
             margin-bottom: 20px;
+            font-weight: 700;
         }
         .inputbox {
             position: relative;
             margin: 15px 0;
         }
-     
+        .inputbox label {
+            display: block;
+            color: #333;
+            font-size: 0.9em;
+            margin-bottom: 5px;
+            font-weight: 600;
+        }
         .inputbox input {
             width: 100%;
             height: 45px;
             padding: 10px;
             border: 1px solid #ddd;
-          
+            border-radius: 5px;
+            font-size: 1em;
         }
         .inputbox input:focus {
             border-color: #007bff;
+            outline: none;
         }
         button {
             width: 100%;
@@ -67,7 +73,11 @@
             text-align: center;
             margin-top: 20px;
         }
-      
+        .register p a {
+            text-decoration: none;
+            color: #007bff;
+            font-weight: 600;
+        }
         .register p a:hover {
             text-decoration: underline;
         }
@@ -88,7 +98,7 @@
             </div>
             <button type="submit">Log in</button>
             <div class="register">
-                <p>No tienes cuenta?  <a href="{{ route('registro.vista') }}">Registrate</a></p>
+                <p>No tienes cuenta? <a href="{{ route('registro.vista') }}">Regístrate</a></p>
             </div>
         </form>
     </div>

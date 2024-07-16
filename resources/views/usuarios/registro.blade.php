@@ -6,7 +6,6 @@
     <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap">
     <style>
-       
         body {
             background-color: #f0f2f5;
             display: flex;
@@ -22,7 +21,6 @@
             border: 1px solid #ddd;
             border-radius: 10px;
             padding: 30px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
         .form-box h2 {
             font-size: 1.8em;
@@ -88,21 +86,24 @@
 <body>
     <div class="form-box">
         <h2>Registra tu nueva cuenta</h2>
-        <form action="/registro" method="POST">
+        <form action="{{ route('registro.post') }}" method="POST">
             @csrf
             <div class="inputbox">
                 <label for="name">Nombre</label>
-                <input type="text" name="name" required>
+                <input type="text" id="name" name="name" required>
             </div>
             <div class="inputbox">
                 <label for="email">Email</label>
-                <input type="email" name="email" required>
+                <input type="email" id="email" name="email" required>
             </div>
             <div class="inputbox">
                 <label for="password">Password</label>
-                <input type="password" name="password" required>
+                <input type="password" id="password" name="password" required>
             </div>
             <button type="submit">Registrar</button>
+            <div class="register">
+                <p>¿Ya tienes una cuenta? <a href="{{ route('login.vista') }}">Inicia sesión</a></p>
+            </div>
         </form>
     </div>
 </body>

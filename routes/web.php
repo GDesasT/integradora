@@ -4,7 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\GameController;
 use App\Http\Controllers\UsuariosController;
 
-Route::get('/', function () {
+Route::get('/dfshgdf', function () {
     return view('welcome');
 })->name('wini');
 
@@ -13,7 +13,7 @@ Route::post('/game/create', [GameController::class, 'createGame'])->name('game.c
 Route::get('/game/{id}', [GameController::class, 'showGame'])->name('game.show');
 Route::post('/game/{id}/move', [GameController::class, 'makeMove'])->name('game.move');
 
-Route::get('/login/vista', [UsuariosController::class, 'vistaLogin'])->name('login.vista');
+Route::get('/', [UsuariosController::class, 'vistaLogin'])->name('login.vista');
 Route::post('/login', [UsuariosController::class, 'logear'])->name('login.post');
 Route::post('logout', [UsuariosController::class, 'logout'])->name('logout');
 

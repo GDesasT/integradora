@@ -5,14 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Dashboard</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
-    <link rel="stylesheet" href="https://kit.fontawesome.com/24af5dc0df.js" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" integrity="sha512-Fo3rlrZj/k7ujTnHq6/2bT/5qD1vFf1c5lt4YP4Crw5j+f1q6H/A9b6xeYq+ikRQ0w0m1UBK5k3e1vB8o/aW1g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
         html, body {
             height: 100%;
             margin: 0;
             padding: 0;
             font-family: 'Arial', sans-serif;
-            
         }
         .navbar {
             background-color: #fff;
@@ -72,15 +71,11 @@
         <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="{{ route('wini') }}">Winni?</a>
-                </li>
-                <li class="nav-item">
                     <a class="nav-link" href="{{ route('perfil.vista') }}">Ver Perfil</a>
                 </li>
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('history') }}">Historial</a>
                 </li>
-               
                 <li class="nav-item">
                     <a class="nav-link" href="{{ route('logout') }}"
                        onclick="event.preventDefault();
