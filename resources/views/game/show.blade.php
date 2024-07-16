@@ -13,7 +13,7 @@
             align-items: center;
             min-height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif;
+            font-family: 'Arial', sans-serif;
         }
         .game-box {
             max-width: 600px;
@@ -33,17 +33,24 @@
         .cell {
             width: 100px;
             height: 100px;
-            background-color: #007bff;
+            background-color: #ffffff;
+            border: 1px solid #ced4da;
             display: flex;
             justify-content: center;
             align-items: center;
             font-size: 3em;
-            color: #ffffff;
+            color: #007bff;
             cursor: pointer;
-            transition: background-color 0.3s;
+            transition: background-color 0.3s, transform 0.1s;
+            border-radius: 10px;
         }
         .cell:hover {
-            background-color: #0056b3;
+            background-color: #f1f1f1;
+            transform: scale(1.05);
+        }
+        .cell::after {
+            content: '';
+            display: block;
         }
         .movements {
             margin-top: 20px;
@@ -61,6 +68,18 @@
             font-size: 1.2em;
             margin-bottom: 5px;
             color: #555;
+            border-left: 5px solid #007bff;
+            padding-left: 10px;
+        }
+        .winner {
+            font-size: 2em;
+            color: #28a745;
+            margin-top: 20px;
+        }
+        .draw {
+            font-size: 2em;
+            color: #dc3545;
+            margin-top: 20px;
         }
     </style>
 </head>
@@ -89,6 +108,8 @@
                 @endforeach
             </ul>
         </div>
+        <div id="winner-message" class="winner" style="display: none;"></div>
+        <div id="draw-message" class="draw" style="display: none;">¡Empate! El juego ha terminado.</div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
@@ -112,13 +133,17 @@
                             $('#current-turn').text(data.nextTurn);
 
                             if (data.winner) {
-                                alert(data.winner + ' gana!');
-                                window.location.href = '/history';
+                                $('#winner-message').text(data.winner + ' gana!').show();
+                                setTimeout(function() {
+                                    window.location.href = '/history';
+                                }, 2000); // Redireccionar después de 2 segundos
                             }
 
                             if (data.draw) {
-                                alert('¡Empate! El juego ha terminado.');
-                                window.location.href = '/history';
+                                $('#draw-message').show();
+                                setTimeout(function() {
+                                    window.location.href = '/history';
+                                }, 2000); // Redireccionar después de 2 segundos
                             }
 
                             const newMovement = `<li>${data.symbol} puesto en la posición ${position}</li>`;

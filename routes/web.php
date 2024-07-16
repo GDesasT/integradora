@@ -8,7 +8,7 @@ Route::get('/dfshgdf', function () {
     return view('welcome');
 })->name('wini');
 
-Route::get('/dashboard', [GameController::class, 'dashboard'])->name('dashboard');
+Route::get('/dashboard', [GameController::class, 'dashboard'])->name('dashboard')->middleware('auth');
 Route::post('/game/create', [GameController::class, 'createGame'])->name('game.create');
 Route::get('/game/{id}', [GameController::class, 'showGame'])->name('game.show');
 Route::post('/game/{id}/move', [GameController::class, 'makeMove'])->name('game.move');
