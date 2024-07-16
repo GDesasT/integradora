@@ -154,7 +154,7 @@
                         position: position
                     },
                     success: function(data) {
-                        console.log(data); // Log the data to see the full response
+                        console.log(data);
 
                         if (data.success) {
                             $(`.cell[data-position="${position}"]`).text(data.symbol);
@@ -164,14 +164,14 @@
                                 $('#winner-message').text(data.winner + ' gana!').show();
                                 setTimeout(function() {
                                     window.location.href = '/history';
-                                }, 2000); // Redireccionar después de 2 segundos
+                                }, 2000);
                             }
 
                             if (data.draw) {
                                 $('#draw-message').show();
                                 setTimeout(function() {
                                     window.location.href = '/history';
-                                }, 2000); // Redireccionar después de 2 segundos
+                                }, 2000);
                             }
 
                             const newMovement = `<tr><td>${data.user}</td><td>${data.symbol}</td><td>${data.position}</td></tr>`;
