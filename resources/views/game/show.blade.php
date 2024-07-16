@@ -15,14 +15,18 @@
             margin: 0;
             font-family: 'Arial', sans-serif;
         }
-        .game-box {
-            max-width: 600px;
+        .game-container {
+            display: flex;
+            max-width: 800px;
             padding: 40px;
             background-color: #ffffff;
             border: 2px solid #dee2e6;
             border-radius: 10px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        .game-box {
             text-align: center;
+            flex: 2;
         }
         .board {
             display: grid;
@@ -53,23 +57,30 @@
             display: block;
         }
         .movements {
-            margin-top: 20px;
+            flex: 1;
+            margin-right: 20px;
         }
         .movements h2 {
             font-size: 1.5em;
             color: #333;
             margin-bottom: 10px;
         }
-        .movements ul {
-            list-style-type: none;
-            padding: 0;
+        .movements table {
+            width: 100%;
+            border-collapse: collapse;
         }
-        .movements li {
-            font-size: 1.2em;
-            margin-bottom: 5px;
+        .movements th, .movements td {
+            border: 1px solid #ced4da;
+            padding: 8px;
+            text-align: left;
+        }
+        .movements th {
+            background-color: #f8f9fa;
+            color: #333;
+        }
+        .movements td {
+            font-size: 1em;
             color: #555;
-            border-left: 5px solid #007bff;
-            padding-left: 10px;
         }
         .winner {
             font-size: 2em;
@@ -84,32 +95,47 @@
     </style>
 </head>
 <body>
-    <div class="game-box">
-        <h1>Tic Tac Toe</h1>
-        <p>Jugador 1: {{ $game->player1->name }}</p>
-        <p>Jugador 2: {{ $player2_name }}</p>
-        <p>Turno de: <span id="current-turn">{{ $currentTurn }}</span></p>
-        <div class="board" id="board">
-            @for ($i = 0; $i < 9; $i++)
-                <div class="cell" data-position="{{ $i }}" role="button" aria-label="Posición {{ $i + 1 }}">
-                    {{ $game->board[$i] }}
-                </div>
-            @endfor
-        </div>
-        <form id="move-form" action="{{ route('game.move', $game->id) }}" method="POST" style="display: none;">
-            @csrf
-            <input type="hidden" name="position" id="position">
-        </form>
+    <div class="game-container">
         <div class="movements">
             <h2>Movimientos Recientes</h2>
-            <ul id="movement-list">
-                @foreach ($moves as $move)
-                    <li>{{ $move->user->name }} puso {{ $move->symbol }} en la posición: {{ $move->position }}</li>
-                @endforeach
-            </ul>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Jugador</th>
+                        <th>Movimiento</th>
+                        <th>Posición</th>
+                    </tr>
+                </thead>
+                <tbody id="movement-list">
+                    @foreach ($moves as $move)
+                        <tr>
+                            <td>{{ $move->user->name }}</td>
+                            <td>{{ $move->symbol }}</td>
+                            <td>{{ $move->position }}</td>
+                        </tr>
+                    @endforeach
+                </tbody>
+            </table>
         </div>
-        <div id="winner-message" class="winner" style="display: none;"></div>
-        <div id="draw-message" class="draw" style="display: none;">¡Empate! El juego ha terminado.</div>
+        <div class="game-box">
+            <h1>Tic Tac Toe</h1>
+            <p>Jugador 1: {{ $game->player1->name }}</p>
+            <p>Jugador 2: {{ $player2_name }}</p>
+            <p>Turno de: <span id="current-turn">{{ $currentTurn }}</span></p>
+            <div class="board" id="board">
+                @for ($i = 0; $i < 9; $i++)
+                    <div class="cell" data-position="{{ $i }}" role="button" aria-label="Posición {{ $i + 1 }}">
+                        {{ $game->board[$i] }}
+                    </div>
+                @endfor
+            </div>
+            <form id="move-form" action="{{ route('game.move', $game->id) }}" method="POST" style="display: none;">
+                @csrf
+                <input type="hidden" name="position" id="position">
+            </form>
+            <div id="winner-message" class="winner" style="display: none;"></div>
+            <div id="draw-message" class="draw" style="display: none;">¡Empate! El juego ha terminado.</div>
+        </div>
     </div>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <script>
@@ -128,6 +154,8 @@
                         position: position
                     },
                     success: function(data) {
+                        console.log(data); // Log the data to see the full response
+
                         if (data.success) {
                             $(`.cell[data-position="${position}"]`).text(data.symbol);
                             $('#current-turn').text(data.nextTurn);
@@ -146,7 +174,7 @@
                                 }, 2000); // Redireccionar después de 2 segundos
                             }
 
-                            const newMovement = `<li>${data.symbol} puesto en la posición ${position}</li>`;
+                            const newMovement = `<tr><td>${data.user}</td><td>${data.symbol}</td><td>${data.position}</td></tr>`;
                             $('#movement-list').append(newMovement);
                         }
                     },

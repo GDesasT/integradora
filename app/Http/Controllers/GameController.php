@@ -63,20 +63,20 @@ class GameController extends Controller
         $game = Game::find($id);
         $position = $request->position;
         $playerSymbol = $this->getCurrentSymbol($game->board);
-
+    
         $board = str_split($game->board);
         if ($board[$position] == '-') {
             $board[$position] = $playerSymbol;
             $game->board = implode('', $board);
             $game->save();
-
+    
             Move::create([
                 'game_id' => $game->id,
                 'user_id' => Auth::id(),
                 'symbol' => $playerSymbol,
                 'position' => $position
             ]);
-
+    
             $winnerSymbol = $this->checkWinner($board);
             if ($winnerSymbol) {
                 if ($winnerSymbol == 'X') {
@@ -86,33 +86,37 @@ class GameController extends Controller
                     $game->player2_win = true; // Marcar que el jugador 2 ganó
                 }
                 $game->save();
-
+    
                 return response()->json([
                     'success' => true,
                     'symbol' => $playerSymbol,
+                    'position' => $position,
                     'winner' => $winnerSymbol == 'X' ? $game->player1->name : session('player2_name'),
                     'redirect' => true
                 ]);
             }
-
+    
             if (!in_array('-', $board)) {
                 return response()->json([
                     'success' => true,
                     'symbol' => $playerSymbol,
+                    'position' => $position,
                     'draw' => true,
                     'redirect' => true // Redirigir después de un empate
                 ]);
             }
-
+    
             return response()->json([
                 'success' => true,
                 'symbol' => $playerSymbol,
+                'position' => $position,
                 'nextTurn' => $playerSymbol == 'X' ? session('player2_name') : $game->player1->name
             ]);
         }
-
+    
         return response()->json(['success' => false], 400);
     }
+    
 
     private function getCurrentSymbol($board)
     {
